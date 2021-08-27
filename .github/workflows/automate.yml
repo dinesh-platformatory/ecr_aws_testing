@@ -47,5 +47,31 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          cat << EOF > workloads/eks-example-dep.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: custom
+  name: custom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: custom
+    spec:
+      containers:
+      - image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        name: my-ecr-repo
+        resources: {}
+status: {}
+EOF
 
 

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: custom
+  name: custom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: custom
+    spec:
+      containers:
+      - image: 515921988912.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo:69756bd103a72e2eaa4ebbd8f0ff80edfdd3bded
+        name: my-ecr-repo
+        resources: {}
+status: {}
