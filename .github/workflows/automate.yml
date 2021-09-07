@@ -54,3 +54,17 @@ jobs:
           ECR_REPOSITORY: my-ecr-repo
           IMAGE_TAG: ${{ github.sha }}
         run: sed "s|{{image}}|$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|g" manifests/deployment.yml > updated_artifacts/updated.yml
+
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'updated_artifacts'
+          destination-github-username: 'dinesh-platformatory'
+          destination-repository-name: 'git@github.com:dinesh-platformatory/kubernetes_artifacts'
+          user-email: dinesh-platformatory@platformatory
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: main
+      
