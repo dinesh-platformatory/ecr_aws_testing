@@ -18,7 +18,7 @@ spec:
         app: custom
     spec:
       containers:
-      - image: 515921988912.dkr.ecr.ap-south-1.amazonaws.com/my-ecr-repo:5c09a3a65d7b61e25f699857f089134e2f4b6911
+      - image: {{image}}
         name: my-ecr-repo
         resources: {}
 status: {}
