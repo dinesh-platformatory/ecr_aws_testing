@@ -63,7 +63,7 @@ jobs:
         with:
           source-directory: 'updated_artifacts'
           destination-github-username: 'dinesh-platformatory'
-          destination-repository-name: 'https://github.com/dinesh-platformatory/kubernetes_artifacts.git'
+          destination-repository-name: 'kubernetes_artifacts'
           user-email: dinesh-platformatory@platformatory
           commit-message: See ORIGIN_COMMIT from $GITHUB_REF
           target-branch: main
