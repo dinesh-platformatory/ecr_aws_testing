@@ -73,7 +73,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'updated_artifacts/updated.yml'
+          source_file: 'updated_artifacts'
           destination_repo: 'dinesh-platformatory/kubernetes_artifacts'
           destination_folder: 'manifests'
           user_email: 'dinesh-platformatory@platformatory'
